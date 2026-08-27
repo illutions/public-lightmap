@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "chrome",
+        "request": "launch",
+        "name": "Debug Website",
+        "url": "https://localhost:5173",
+        "enableContentValidation": false,
+        "webRoot": "${workspaceFolder}",
+        "trace": true,
+        "sourceMapPathOverrides": {
+            "vite:///src/*": "${workspaceFolder}/src/*",
+            "webpack:///*": "${workspaceFolder}/*"
+        }
+      },
+    ]
+}

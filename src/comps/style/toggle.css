@@ -1,0 +1,71 @@
+:host {
+  z-index: 2;
+  position: fixed;
+  top: 85%;
+  left: 50%;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  transform: translate(-50%, -50%);
+  user-select: none;
+  pointer-events: none;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.9rem;
+  color: inherit;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: #20242bcc;
+  border: 1px solid #ffffff40;
+  border-radius: 999px;
+  box-shadow: 0 0.5rem 1.5rem #0006;
+  backdrop-filter: blur(0.75rem);
+  -webkit-backdrop-filter: blur(0.75rem);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+button:hover {
+  border-color: #ffffff80;
+}
+
+button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.track {
+  position: relative;
+  width: 2.75rem;
+  height: 1.5rem;
+  flex: none;
+  box-sizing: border-box;
+  background: #737373;
+  border: 1px solid #ffffffb3;
+  border-radius: 999px;
+  transition: background-color 160ms ease;
+}
+
+.thumb {
+  position: absolute;
+  top: 0.1875rem;
+  left: 0.1875rem;
+  width: 1rem;
+  height: 1rem;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px #0008;
+  transition: transform 160ms ease;
+}
+
+button[data-mode='lightmap'] .track {
+  background: #e34170;
+}
+
+button[data-mode='lightmap'] .thumb {
+  transform: translateX(1.25rem);
+}

@@ -1,0 +1,19 @@
+# Dependencies
+/node_modules
+
+# Build Output
+/dist
+
+# Vite Development Cache
+/.vite-cache
+
+# License file for customer
+/license/token.json
+
+# Made by vite
+/bundle-report.html
+
+# Local AI configuration
+/AGENTS.md
+/.agents/
+/.codex/

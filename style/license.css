@@ -1,0 +1,18 @@
+.license {
+  z-index: 2;
+  opacity: 0.85;
+  position: fixed;
+  top: calc(env(safe-area-inset-top, 0px) + 1rem);
+  left: 50%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.875rem;
+  line-height: 1;
+  color: #fff;
+  transform: translateX(-50%);
+  transition: opacity 160ms ease;
+}
+
+.license:hover {
+  text-decoration: underline;
+  opacity: 1;
+}

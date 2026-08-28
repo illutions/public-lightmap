@@ -20,7 +20,7 @@ export class Fruitbowl extends Mesh3D {
       if (!(child.material instanceof MeshStandardMaterial)) return;
 
       const materialCombined = new MeshBasicMaterial({ color: 0xffffff });
-      const materialLightmap = child.material.clone();
+      const materialLightmap = child.material;
 
       this.setTexture({ name: 'Fruitbowl_Combined', material: materialCombined, slot: 'ColorMap' });
       this.setTexture({ name: 'Fruitbowl_Diffuse', material: materialLightmap, slot: 'LightMap' });

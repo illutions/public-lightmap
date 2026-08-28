@@ -11,9 +11,9 @@ export class Furniture extends Mesh3D {
   public override onTraverse(gltfObj: Mesh): void {
     if (!(gltfObj.material instanceof MeshStandardMaterial)) return;
 
-    // Create and register both baked-material variants
+    // Create both baked-material variants
     const materialCombined = new MeshBasicMaterial({ color: 0xffffff });
-    const materialLightmap = gltfObj.material.clone();
+    const materialLightmap = gltfObj.material;
 
     this.setTexture({ name: 'Furniture_Combined', material: materialCombined, slot: 'ColorMap' });
     this.setTexture({ name: 'Furniture_Diffuse', material: materialLightmap, slot: 'LightMap' });

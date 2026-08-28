@@ -1,6 +1,6 @@
 # Illutions Engine Lightmap Example
 
-This example compares a fully combined unused texture with a separate lightmap on a detailed interior scene and lets
+This example compares a fully combined texture with a separate lightmap on a detailed interior scene and lets
 users switch between both rendering approaches at runtime.
 
 ## Live demo
@@ -13,10 +13,10 @@ and use the switch to compare the combined texture with the separate lightmap.
 ## What this example demonstrates
 
 - Runtime switching between combined-texture and separate-lightmap rendering
-- A basic material for the fully unused texture and a standard material for the lightmap workflow
-- Unused texture assignment across the meshes of a GLTF scene
+- A basic material for the fully texture and a standard material for the lightmap workflow
+- Texture assignment across the meshes of a GLTF scene
 - XState-powered synchronization between the rendering mode and the HTML switch
-- Orbit controls for inspecting unused lighting from different angles
+- Orbit controls for inspecting lighting from different angles
 - Direct Draco-compressed GLB loading with embedded unused textures
 - SSR post-processing and antialiased rendering configured through TypeScript
 - Runtime controls for inspecting and tuning the experience

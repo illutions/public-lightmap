@@ -11,9 +11,9 @@ export class Backdrop extends Mesh3D {
   public override onTraverse(gltfObj: Mesh): void {
     if (!(gltfObj.material instanceof MeshStandardMaterial)) return;
 
-    // Create and register both baked-material variants
+    // Create both baked-material variants
     const materialCombined = new MeshBasicMaterial({ color: 0xffffff, transparent: true });
-    const materialLightmap = gltfObj.material.clone();
+    const materialLightmap = gltfObj.material;
 
     this.setTexture({ name: 'Backdrop_Combined', material: materialCombined, slot: 'ColorMap' });
     this.setTexture({ name: 'Backdrop_Diffuse', material: materialLightmap, slot: 'LightMap' });

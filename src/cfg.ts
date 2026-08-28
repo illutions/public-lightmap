@@ -14,7 +14,7 @@ cfg.orbitCtrls.enableDamping = true;
 cfg.orbitCtrls.dampingFactor = 0.05;
 cfg.orbitCtrls.maxPolarAngle = 170;
 cfg.orbitCtrls.maxDistance = 15;
-cfg.orbitCtrls.minDistance = 3;
+cfg.orbitCtrls.minDistance = 4;
 
 // Load the current Draco-compressed 3D scene
 cfg.model.file = ['scene/lightmap-low.glb', 'scene/lightmap-med.glb', 'scene/lightmap-high.glb'];

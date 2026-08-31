@@ -10,4 +10,4 @@ import { createStateMachine } from './stm';
 // Start the app when the page is ready
 document.addEventListener('DOMContentLoaded', () => {
   App.run(cfg, classes, createStateMachine);
-}); 
+});

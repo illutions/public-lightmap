@@ -30,9 +30,6 @@ cfg.envCtrls.rotation.y = 310;
 
 // Configure post-processing
 cfg.post.aa.mode = 'traa'
-cfg.post.ssr.enable = true;
-cfg.post.ssr.maxDistance = 15;
-cfg.post.ssr.thickness = 0.02;
 cfg.post.webgl.aa.fxaa.sharpness = 1;
 
 cfg.debug.log = 'all'

@@ -1,21 +1,20 @@
 # Illutions Engine Lightmap Example
 
-This example compares a fully combined texture with a separate lightmap on a detailed interior scene and lets
-users switch between both rendering approaches at runtime.
+This example compares a fully combined texture, a separate lightmap, and real-time lighting on a detailed interior scene and lets users switch between all three rendering approaches at runtime.
 
 ## Live demo
 
 [![Illutions Engine Lightmap example](.github/assets/screenshot.png)](https://illutions.github.io/public-lightmap/)
 
 **[Launch the interactive demo](https://illutions.github.io/public-lightmap/)**
-and use the switch to compare the combined texture with the separate lightmap.
+and use the mode control to compare combined, lightmap, and real-time rendering.
 
 ## What this example demonstrates
 
-- Runtime switching between combined-texture and separate-lightmap rendering
-- A basic material for the fully texture and a standard material for the lightmap workflow
+- Runtime switching between combined-texture, separate-lightmap, and real-time rendering
+- Dedicated material variants for the combined, lightmap, and real-time workflows
 - Texture assignment across the meshes of a GLTF scene
-- XState-powered synchronization between the rendering mode and the HTML switch
+- XState-powered synchronization between the rendering mode and the HTML mode control
 - Orbit controls for inspecting lighting from different angles
 - Direct Draco-compressed GLB loading with embedded unused textures
 - SSR post-processing and antialiased rendering configured through TypeScript

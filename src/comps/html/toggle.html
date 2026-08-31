@@ -1,5 +1,5 @@
-<button type="button" role="switch" aria-checked="false" aria-label="Switch between combined texture and lightmap">
-  <span>Combined</span>
-  <span class="track" aria-hidden="true"><span class="thumb"></span></span>
-  <span>Lightmap</span>
-</button>
+<div id="mode-control" role="group" aria-label="Rendering mode">
+  <button type="button" data-step="-1" aria-label="Previous rendering mode"><span aria-hidden="true">‹</span></button>
+  <span id="mode" aria-live="polite">Combined</span>
+  <button type="button" data-step="1" aria-label="Next rendering mode"><span aria-hidden="true">›</span></button>
+</div>

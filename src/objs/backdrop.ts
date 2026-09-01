@@ -21,6 +21,7 @@ export class Backdrop extends Mesh3D {
 
     // Defines the backdrop transparency mask because glTF has no separate alpha-map slot
     const textureAlpha = this.getImageTexture('Backdrop_Alpha');
+    textureAlpha.channel = 1;
 
     // Contains the fully baked backdrop appearance for combined rendering
     const textureCombined = this.getImageTexture('Backdrop_Combined');

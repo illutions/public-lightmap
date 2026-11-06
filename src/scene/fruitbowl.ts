@@ -1,5 +1,7 @@
-import { Mesh, MeshBasicMaterial, MeshStandardMaterial, SRGBColorSpace } from 'three';
-import { Mesh3D } from 'illutions';
+import { Mesh, MeshBasicMaterial, MeshStandardMaterial, type Object3D } from 'three';
+import { Obj3D } from 'illutions';
+
+import type { MyApp } from '../index';
 
 import type { Mode } from './furniture';
 
@@ -10,29 +12,21 @@ interface PrimitiveMaterials {
   realtime: MeshStandardMaterial;
 }
 
-export class Fruitbowl extends Mesh3D {
+export class Fruitbowl extends Obj3D {
+  declare public comps: MyApp['comps'];
+  
   private readonly primitives: PrimitiveMaterials[] = [];
 
-  // Called once before the GLTF model starts loading to request image textures from unused GLTF images
-  protected override onStart(): void {
-    this.requestImageTexture('Fruitbowl_Combined');
-    this.requestImageTexture('Fruitbowl_Diffuse');
-  }
-
   // Called once when this object is encountered while traversing the GLTF model
-  public override onTraverse(gltfObj: Mesh): void {
+  public override onCreate(obj: Object3D): void {
     // Contains the fully baked fruit bowl appearance for combined rendering
-    const textureCombined = this.getImageTexture('Fruitbowl_Combined');
-    textureCombined.channel = 1;
-    textureCombined.colorSpace = SRGBColorSpace;
+    const textureCombined = this.comps.texture.fruitbowlCombined.obj;
 
     // Contains the baked diffuse lighting used by the lightmap materials
-    const textureDiffuse = this.getImageTexture('Fruitbowl_Diffuse');
-    textureDiffuse.channel = 1;
-    textureDiffuse.colorSpace = SRGBColorSpace;
+    const textureDiffuse = this.comps.texture.fruitbowlDiffuse.obj;
 
     // Create combined, lightmap, and real-time material variants for every fruit primitive
-    gltfObj.traverse((child) => {
+    obj.traverse((child) => {
       if (!(child instanceof Mesh)) return;
       if (!(child.material instanceof MeshStandardMaterial)) return;
 
@@ -49,9 +43,6 @@ export class Fruitbowl extends Mesh3D {
       this.primitives.push(primitive);
       child.material = primitive.combined;
     });
-
-    // Set the underlying GLTF object
-    this.obj = gltfObj;
   }
 
   // Switch every primitive between combined, lightmap, and real-time rendering

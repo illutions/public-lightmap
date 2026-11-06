@@ -4,19 +4,18 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import viteCompression from 'vite-plugin-compression';
 import { visualizer } from 'rollup-plugin-visualizer';
-import unusedCode from 'vite-plugin-unused-code';
 
 dns.setDefaultResultOrder('verbatim');
 const REPO_ROOT = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   root: REPO_ROOT,
-  base: process.env.PAGES_BASE_PATH || '/',
+  base: process.env.PAGES_BASE_PATH || './',
 
   server: {
-  host: 'localhost',
+    host: 'localhost',
     port: 5173,
-    strictPort: true,
+    strictPort: false,
   },
 
   cacheDir: path.resolve(REPO_ROOT, '.vite-cache'),
@@ -24,9 +23,6 @@ export default defineConfig({
   css: false,
 
   plugins: [
-    unusedCode({
-      patterns: ['src/**/*.*'],
-    }),
     viteCompression({
       algorithm: 'gzip',
       ext: '.gz',

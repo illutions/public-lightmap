@@ -1,21 +1,22 @@
 import { type AnyStateMachine, setup } from 'xstate';
-import type { App, SceneReadyEvent } from 'illutions';
 
-import { classes } from './classes';
-import type { Mode } from './objs/furniture';
+import type { SceneReadyEvent } from 'illutions';
+
+import type { MyApp } from './index';
+import type { Mode } from './scene/furniture';
 
 // Define rendering-mode switching, scene lighting, and orbit control behavior with a state machine
-export function createStateMachine(app: App<typeof classes>): AnyStateMachine {
-  const { comps, envCtrls, objs3D, orbitCtrls } = app;
+export const stm = (app: MyApp): AnyStateMachine => {
+  const { comps, envCtrls, orbitCtrls } = app;
   const envIntensity = envCtrls.get().environmentIntensity ?? 0;
 
   const setCombinedLighting = (): void => {
-    objs3D.Spot.obj.visible = false;
+    comps.scene.spot.obj.visible = false;
     envCtrls.set({ environmentIntensity: 0 });
   };
 
   const setStandardLighting = (): void => {
-    objs3D.Spot.obj.visible = true;
+    comps.scene.spot.obj.visible = true;
     envCtrls.set({ environmentIntensity: envIntensity });
   };
 
@@ -28,10 +29,10 @@ export function createStateMachine(app: App<typeof classes>): AnyStateMachine {
       setMode: ({ event }) => {
         if (event.type !== 'Mode_Changed') return;
 
-        objs3D.Backdrop.setMode(event.mode);
-        objs3D.Furniture.setMode(event.mode);
-        objs3D.Fruitbowl.setMode(event.mode);
-        comps.Toggle[0]?.setMode(event.mode);
+        comps.scene.backdrop.setMode(event.mode);
+        comps.scene.furniture.setMode(event.mode);
+        comps.scene.fruitbowl.setMode(event.mode);
+        comps.web.toggle[0]?.setMode(event.mode);
 
         if (event.mode === 'combined')
           setCombinedLighting();
@@ -61,4 +62,4 @@ export function createStateMachine(app: App<typeof classes>): AnyStateMachine {
       },
     },
   });
-}
+};

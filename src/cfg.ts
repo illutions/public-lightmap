@@ -1,37 +1,77 @@
-import { cfg } from 'illutions';
+import { setCfg, degToRad } from 'illutions';
 
-// Display runtime information and editable settings
-cfg.gui.infoBox.enable = true;
-cfg.gui.inspector.enable = true;
+export const cfg = setCfg({
+  // Display runtime information and editable settings
+  gui: {
+    infoBox: {
+      enable: true,
+    },
+    inspector: {
+      enable: true,
+    },
+  },
 
-// Load orbit controls
-cfg.orbitCtrls.load = true;
-cfg.orbitCtrls.autoRotate = true;
-cfg.orbitCtrls.autoRotateSpeed = 0.2;
-cfg.orbitCtrls.rotateSpeed = 0.25;
-cfg.orbitCtrls.enablePan = false;
-cfg.orbitCtrls.enableDamping = true;
-cfg.orbitCtrls.dampingFactor = 0.05;
-cfg.orbitCtrls.maxPolarAngle = 170;
-cfg.orbitCtrls.maxDistance = 15;
-cfg.orbitCtrls.minDistance = 4;
+  // Load the current Draco-compressed 3D scene
+  model: {
+    file: ['scene/lightmap-low.glb', 'scene/lightmap-med.glb', 'scene/lightmap-high.glb'],
+    compress: {
+      mesh: 'draco',
+    },
+  },
 
-// Load the current Draco-compressed 3D scene
-cfg.model.file = ['scene/lightmap-low.glb', 'scene/lightmap-med.glb', 'scene/lightmap-high.glb'];
-cfg.model.compress.mesh = 'draco';
+  // Light the scene with an external EXR environment
+  envCtrls: {
+    enable: true,
+    map: ['scene/lonely_road_afternoon_puresky_256.exr'],
+    dataType: 'float',
+    environmentIntensity: 0.3,
+    backgroundIntensity: 0,
+    rotation: {
+      y: degToRad(310),
+    },
+  },
 
-// Light the scene with an external EXR environment
-cfg.envCtrls.enable = true;
-cfg.envCtrls.map = ['scene/lonely_road_afternoon_puresky_256.exr'];
-cfg.envCtrls.dataType = 'float';
-cfg.envCtrls.environmentIntensity = 0.3;
-cfg.envCtrls.backgroundIntensity = 0;
-cfg.envCtrls.rotation.y = 310;
+  // Load orbit controls
+  orbitCtrls: {
+    load: true,
+    autoRotate: true,
+    autoRotateSpeed: 0.2,
+    rotateSpeed: 0.25,
+    enablePan: false,
+    enableDamping: true,
+    dampingFactor: 0.05,
+    maxPolarAngle: degToRad(170),
+    maxDistance: 15,
+    minDistance: 4,
+  },
 
-// Configure post-processing
-cfg.post.aa.mode = 'traa'
-cfg.post.webgl.aa.fxaa.sharpness = 1;
+  render: {
+    // Configure renderer profiles
+    profile: {
+      webgpu: {
+        msaa: 'render',
+        aa: 'traa',
+      },
+      webgl: {
+        msaa: 'post',
+        aa: 'fxaa',
+      },
+    },
+  },
 
-cfg.debug.log = 'all'
+  // Configure post-processing
+  post: {
+    webgl: {
+      aa: {
+        fxaa: {
+          sharpness: 1,
+        },
+      },
+    },
+  },
 
-export { cfg };
+  // Log all messages to the console.
+  debug: {
+    log: 'all',
+  },
+});

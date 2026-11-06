@@ -1,11 +1,11 @@
 {
-    "version": "0.2.0",
+    "version": "0.0.0",
     "configurations": [
       {
         "type": "chrome",
         "request": "launch",
         "name": "Debug Website",
-        "url": "https://localhost:5173",
+        "url": "http://localhost:5173",
         "enableContentValidation": false,
         "webRoot": "${workspaceFolder}",
         "trace": true,

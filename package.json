@@ -13,22 +13,24 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "illutions": "^0.30.0",
-    "three": "~0.185.1",
-    "xstate": "~5.32.5"
+    "illutions": "^0.38.0",
+    "three": "~0.187.0",
+    "xstate": "~5.33.2"
   },
   "devDependencies": {
-    "@types/three": "~0.185.0",
-    "@webgpu/types": "^0.1.70",
+    "@types/three": "~0.187.0",
+    "@webgpu/types": "^0.1.74",
     "javascript-obfuscator": "^5.5.0",
-    "rollup-plugin-visualizer": "~7.0.0",
-    "terser": "~5.49.0",
+    "rollup-plugin-visualizer": "~7.1.1",
+    "terser": "~5.51.2",
     "typescript": "~5.9.3",
-    "vite": "~8.0.13",
-    "vite-plugin-compression": "~0.5.1",
-    "vite-plugin-unused-code": "~0.1.8"
+    "vite": "~8.3.0",
+    "vite-plugin-compression": "~0.5.1"
   },
   "overrides": {
-    "uuid": "11.1.1"
+    "uuid": "11.1.1",
+    "@vercel/cli-config": {
+      "zod": "4.6.6"
+    }
   }
 }

@@ -1,6 +1,6 @@
-import { Comp } from 'illutions';
+import { Web } from 'illutions';
 
-import type { Mode } from '../objs/furniture';
+import type { Mode } from '../scene/furniture';
 import css from './style/toggle.css?inline';
 import html from './html/toggle.html?raw';
 
@@ -10,7 +10,7 @@ const modes = [
   { value: 'realtime', label: 'Realtime' },
 ] as const satisfies readonly { value: Mode; label: string }[];
 
-export class Toggle extends Comp {
+export class Toggle extends Web {
   private modeIndex = 0;
   private buttons: HTMLButtonElement[] = [];
   private modeLabel: HTMLElement | null = null;
